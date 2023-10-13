@@ -16,7 +16,7 @@ amount of times I managed to fix or do something specific only because
 someone else, way more advanced than me, had already figured it out
 and posted simple instructions for people like me to follow.
 
-I am an eternal student of programming and still in the very beginning
-of my journey, so don't expect anything groundbreaking. I will mostly post
+I am an eternal student of programming and still in the beginning
+of the journey, so don't expect anything groundbreaking. I will mostly post
 things about gamedev and maybe Zig related things, that I had a hard time
 figuring out.
