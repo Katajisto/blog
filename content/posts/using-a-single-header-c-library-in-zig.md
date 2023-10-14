@@ -7,9 +7,9 @@ I tried using raygui.h in Zig but ran into multiple build issues. The key was so
 
 Currently, you need to wrap the .h file in a .c file like this.
 
-  #define RAYGUI_IMPLEMENTATION
-	#include "raygui.h"
-  
+      #define RAYGUI_IMPLEMENTATION
+	#include "raygui.h"  
+
 Then, in my case the header file in declared as a dependency alongside raylib in my build.zig.zon file like this (I'm using my own fork of raylib, since when using Zig nightly, the normal raylib build.zig file is not working, I wrote a post about that before this one). So here is my build.zig.zon file:
 
     
