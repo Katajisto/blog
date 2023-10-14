@@ -4,8 +4,8 @@ date = 2023-10-14T10:08:58+03:00
 draft = false
 +++
 I tried using raygui.h in Zig but ran into multiple build issues. The key was something that was discussed in multiple Zig discussions and issues. 
-Currently, you need to wrap the .h file in a .c file like this. I call this raygui_impl.c like others suggested in the repo for Zig. There is discussion about this in here: 
-[I found this here.](https://github.com/ziglang/zig/issues/17302#issuecomment-1737417445)
+Currently, you need to wrap the .h file in a .c file like this. I call this raygui_impl.c like others suggested in the repo for Zig. There is discussion about this in 
+[here.](https://github.com/ziglang/zig/issues/17302#issuecomment-1737417445)
 
     #define RAYGUI_IMPLEMENTATION
 	#include "raygui.h"  
