@@ -4,10 +4,10 @@ date = 2023-10-14T10:08:58+03:00
 draft = false
 +++
 I tried using raygui.h in Zig but ran into multiple build issues. The key was something that was discussed in multiple Zig discussions and issues. 
+Currently, you need to wrap the .h file in a .c file like this. I call this raygui_impl.c like others suggested in the repo for Zig. There is discussion about this in here: 
+[I found this here.](https://github.com/ziglang/zig/issues/17302#issuecomment-1737417445)
 
-Currently, you need to wrap the .h file in a .c file like this.
-
-      #define RAYGUI_IMPLEMENTATION
+    #define RAYGUI_IMPLEMENTATION
 	#include "raygui.h"  
 
 Then, in my case the header file in declared as a dependency alongside raylib in my build.zig.zon file like this (I'm using my own fork of raylib, since when using Zig nightly, the normal raylib build.zig file is not working, I wrote a post about that before this one). So here is my build.zig.zon file:
