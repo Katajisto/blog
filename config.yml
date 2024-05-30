@@ -52,9 +52,7 @@ params:
     homeInfoParams:
         Title: "Hello!"
         Content: >
-            Programming for around 10 years. Just trying to write good software and give back to the community 
-            by sharing things I figured out, just like others before me. Currently working on learning game development
-            in Zig.
+            Programming for around 10 years. Just trying to write good software.
         socialIcons:
         - name: github
           url: "https://github.com/katajisto"
