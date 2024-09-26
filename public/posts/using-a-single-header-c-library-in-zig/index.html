@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="I tried using raygui.h in Zig but ran into multiple build issues. The key was something that was discussed in multiple Zig discussions and issues.
+Currently, you need to wrap the .h file in a .c file like this. I call this raygui_impl.c like others suggested in the repo for Zig. There is discussion about this in
+here.
+#define RAYGUI_IMPLEMENTATION
+#include &quot;raygui.h&quot;  
+
+Then, in my case the header file in declared as a dependency alongside raylib in my build.zig.zon file like this (I&rsquo;m using my own fork of raylib, since when using Zig nightly, the normal raylib build.zig file is not working, I wrote a post about that before this one). So here is my build.zig.zon file:">  
+
+  <title>
+    
+      Using a Single Header C Library in Zig
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="/css/main.13b60eb143f7d754e8717995daca05d5a28a5aa442b76af20fe5f91b3b82086c9084b820c9f813c983b406e6485b73beb66336301137fdc693ad5d84ab6f0c1d.css" integrity="sha512-E7YOsUP311TocXmV2soF1aKKWqRCt2ryD&#43;X5GzuCCGyQhLggyfgTyYO0BuZIW3O&#43;tmM2MBE3/caTrV2Eq28MHQ==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="/">..</a>
+
+
+<article>
+    <p class="post-meta">
+        <time datetime="2023-10-14 10:08:58 &#43;0300 EEST">
+            2023-10-14
+        </time>
+    </p>
+
+    <h1>Using a Single Header C Library in Zig</h1>
+
+    
+
+    <p>I tried using raygui.h in Zig but ran into multiple build issues. The key was something that was discussed in multiple Zig discussions and issues.
+Currently, you need to wrap the .h file in a .c file like this. I call this raygui_impl.c like others suggested in the repo for Zig. There is discussion about this in
+<a href="https://github.com/ziglang/zig/issues/17302#issuecomment-1737417445">here.</a></p>
+<pre><code>#define RAYGUI_IMPLEMENTATION
+#include &quot;raygui.h&quot;  
+</code></pre>
+<p>Then, in my case the header file in declared as a dependency alongside raylib in my build.zig.zon file like this (I&rsquo;m using my own fork of raylib, since when using Zig nightly, the normal raylib build.zig file is not working, I wrote a post about that before this one). So here is my build.zig.zon file:</p>
+<pre><code>.{
+    .name = &quot;my-game&quot;,
+    .version = &quot;0.0.1&quot;,
+    .paths = .{&quot;&quot;},
+    .dependencies = .{
+        .raylib = .{
+            .url = &quot;https://github.com/Katajisto/raylib-zig-nightly/archive/refs/heads/master.tar.gz&quot;, // using a fork for zig nightly correct build.zig
+            .hash = &quot;12203c3836e3f3f987c013b74ec62afe9a7c5790910eedff144c0352c3362f53d800&quot;,
+        },
+        .raygui = .{
+            .url = &quot;https://github.com/raysan5/raygui/archive/refs/tags/4.0.tar.gz&quot;,
+            .hash = &quot;1220b64eaeaf55609b3152b64d108ea73981c9689e783bddc68c80e77d275ebac164&quot;
+        }
+    },
+}
+</code></pre>
+<p>Then, in my build.zig, I include and link it to the package.</p>
+<pre><code>const rg = b.dependency(&quot;raygui&quot;, .{
+    .target = target,
+    .optimize = optimize,
+});
+const includepath = rg.path(&quot;/src/&quot;);
+exe.addIncludePath(includepath);
+exe.addCSourceFiles(.{ .files = &amp;[_][]const u8{&quot;./src/c/raygui_impl.c&quot;}, .flags = &amp;[_][]const u8{ &quot;-g&quot;, &quot;-O3&quot; } });
+</code></pre>
+<p>This means that I have the raygui.h in my include path, so the c file has access to it and I also add the C source file.</p>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>

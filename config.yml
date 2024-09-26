@@ -1,8 +1,8 @@
 
 baseURL: "https://ktj.st"
-title: Tuomas Katajisto's homepage
+title: Tuomas Katajisto
 paginate: 5
-theme: papermod
+theme: nostyleplease
 
 enableInlineShortcodes: true
 enableRobotsTXT: true

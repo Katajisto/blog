@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Games on Tuomas Katajisto</title>
+    <link>https://ktj.st/games/</link>
+    <description>Recent content in Games on Tuomas Katajisto</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 01 Jan 1970 02:33:43 +0200</lastBuildDate>
+    <atom:link href="https://ktj.st/games/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>100 Boxes</title>
+      <link>https://ktj.st/games/100-boxes/</link>
+      <pubDate>Thu, 01 Jan 1970 02:33:43 +0200</pubDate>
+      <guid>https://ktj.st/games/100-boxes/</guid>
+      <description>&lt;iframe src=&#34;https://studio42.fi/games/100boxes/10/&#34;&gt;&lt;/iframe&gt;&#xA;&lt;p&gt;100 boxes is a game I made in order to demo my isometric game engine built on top of&#xA;a basic rust rendering library called macroquad, that provided me with basic 2D rendering&#xA;primitives. It features most of the engine&amp;rsquo;s systems: basic 2d lighting, animations and&#xA;isometric graphics. I also built a level editor for the engine which was used to create&#xA;the levels and animations seen in the game. It was supposed to have a 100 levels, but&#xA;it currently has only 9. I am thinking of making a new version of it with my current&#xA;3D engine project, but we will have to see.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Risto goes around the world</title>
+      <link>https://ktj.st/games/risto/</link>
+      <pubDate>Thu, 01 Jan 1970 02:33:43 +0200</pubDate>
+      <guid>https://ktj.st/games/risto/</guid>
+      <description>&lt;iframe src=&#34;https://studio42.fi/games/risto/3rd%20day%20complete%20%28final%20build%29/&#34;&gt;&lt;/iframe&gt;&#xA;&lt;p&gt;Help Risto get back home! A game jam game for Ludum Dare 54 made by me and Matias Järvenpää.&#xA;Made with the same custom rust engine as 100 boxes, but this game kind of started showing the&#xA;limits of the engine and played a part in me wanting to start working on a new 3D engine that&#xA;will help me ship some game some day.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

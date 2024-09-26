@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://ktj.st/posts/</loc>
+    <lastmod>2023-10-14T10:08:58+03:00</lastmod>
+  </url><url>
+    <loc>https://ktj.st/posts/using-a-single-header-c-library-in-zig/</loc>
+    <lastmod>2023-10-14T10:08:58+03:00</lastmod>
+  </url><url>
+    <loc>https://ktj.st/</loc>
+    <lastmod>2022-08-25T21:30:04+08:00</lastmod>
+  </url><url>
+    <loc>https://ktj.st/games/100-boxes/</loc>
+    <lastmod>1970-01-01T02:33:43+02:00</lastmod>
+  </url><url>
+    <loc>https://ktj.st/games/</loc>
+    <lastmod>1970-01-01T02:33:43+02:00</lastmod>
+  </url><url>
+    <loc>https://ktj.st/games/risto/</loc>
+    <lastmod>1970-01-01T02:33:43+02:00</lastmod>
+  </url><url>
+    <loc>https://ktj.st/categories/</loc>
+  </url><url>
+    <loc>https://ktj.st/tags/</loc>
+  </url>
+</urlset>
