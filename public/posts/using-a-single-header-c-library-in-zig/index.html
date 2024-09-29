@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang=""><head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="I tried using raygui.h in Zig but ran into multiple build issues. The key was something that was discussed in multiple Zig discussions and issues.
-Currently, you need to wrap the .h file in a .c file like this. I call this raygui_impl.c like others suggested in the repo for Zig. There is discussion about this in
-here.
-#define RAYGUI_IMPLEMENTATION
-#include &quot;raygui.h&quot;  
-
-Then, in my case the header file in declared as a dependency alongside raylib in my build.zig.zon file like this (I&rsquo;m using my own fork of raylib, since when using Zig nightly, the normal raylib build.zig file is not working, I wrote a post about that before this one). So here is my build.zig.zon file:">  
+   <meta name="description" content="I tried using raygui.h in Zig but ran into multiple build issues. The key was something that was discussed in multiple Zig discussions and issues. Currently, you need to wrap the .h file in a .c file like this. I call this raygui_impl.c like others suggested in the repo for Zig. There is discussion about this in here.
+#define RAYGUI_IMPLEMENTATION #include &quot;raygui.h&quot; Then, in my case the header file in declared as a dependency alongside raylib in my build.">  
 
   <title>
     
