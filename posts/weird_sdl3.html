@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Weird issue with SDL3 GPU API and metal</title>
+    <style>
+    body {
+      padding: 20px;
+      max-width: 1000px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Weird issue with SDL3 GPU API and metal</h1>
+    <a href="https://ktj.st">Tuomas Katajisto (t@ktj.st)</a>
+    <h2>10.2.2025</h2>
+    (NOTE: This post mostly exists so that someone else running into a similar error would find this on Google and be able to solve it faster.)
+    </br></br>
+    I ran into this super weird issue on MacOS that caused me a lot of headache while working on my game engine on mac. My current plan is to build the engine on top of the
+    new GPU API provided by SDL3. I compile my shaders from Slang to SPIRV and Metal. While loading the shaders with the GPU API, an error occurs saying that my metal shading language
+    version is too old.
+    </br></br>
+    The error looks like this:
+    <pre>
+ERROR: Creating MTLLibrary failed: Error Domain=MTLLibraryErrorDomain Code=3 "tri.vert.slang:12:3: error: 'vertex' attribute requires Metal language standard macos-metal2.3 or higher
+    <pre>
+    </br></br>
+    I am writing the engine in a new programming language in closed beta called Jai and I had a C version of the same code to load the shader where this error did not occur with the same
+    compiled shader. I fairly quickly realized, that this is due to some difference in how MacOS related things are configured in Jai vs when building with GCC. These differences seemed to cause
+    the default MSL version to be very low. I went into SDL's source, and found
+    the place where the shader is loaded, and added an additional setting to set the Metal shading language version to the version my shaders required. I then re-compiled SDL3 and re-installed it on my
+    machine and everything started working. The change I did was to the: ./src/gpu/metal/SDL_gpu_metal.m file, and I changed only one function slightly to have the metal language version set. 
+<pre>
+MTLCompileOptions* options = [[MTLCompileOptions alloc] init];
+options.languageVersion = MTLLanguageVersion2_3;
+
+if (format == SDL_GPU_SHADERFORMAT_MSL) {
+    NSString *codeString = [[NSString alloc]
+        initWithBytes:code
+               length:codeSize
+             encoding:NSUTF8StringEncoding];
+    library = [renderer->device
+        newLibraryWithSource:codeString
+                     options:options
+                       error:&error];
+</pre>
+  </body>
+</html>
