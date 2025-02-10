@@ -21,7 +21,7 @@
     The error looks like this:
     <pre>
 ERROR: Creating MTLLibrary failed: Error Domain=MTLLibraryErrorDomain Code=3 "tri.vert.slang:12:3: error: 'vertex' attribute requires Metal language standard macos-metal2.3 or higher
-    <pre>
+    </pre>
     </br></br>
     I am writing the engine in a new programming language in closed beta called Jai and I had a C version of the same code to load the shader where this error did not occur with the same
     compiled shader. I fairly quickly realized, that this is due to some difference in how MacOS related things are configured in Jai vs when building with GCC. These differences seemed to cause
