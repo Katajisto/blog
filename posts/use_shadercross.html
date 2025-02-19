@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>If you are using SDL_gpu use SDL_shadercross</title>
+    <style>
+    body {
+      padding: 20px;
+      max-width: 1000px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>If you are using SDL_gpu use SDL_shadercross</h1>
+    <a href="https://ktj.st">Tuomas Katajisto (t@ktj.st)</a>
+    <h2>19.2.2025</h2>
+    I have been writing a new renderer for my engine using the new and interesting SDL GPU API.
+    This has been mostly a nice exprience, but working with shaders across platforms has been really
+    annoying.
+    </br></br>
+    This is just a quick note, that atleast for me, writing shaders in Slang to compile shaders to Metal and SPIR-V for use
+    with the GPU API, has been very annoying and things were constantly breaking between Metal and Vulkan. I think it's a good idea to
+    just write HLSL and use SDL_shadercross to compile those to Metal and SPIR-V.
+  </body>
+</html>
